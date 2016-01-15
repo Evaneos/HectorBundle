@@ -1,8 +1,7 @@
 Hector Bundle
-------
+-------------
 
-[![Build Status](https://travis-ci.org/Evaneos/Hector.svg?branch=master)](https://travis-ci.org/Evaneos/Hector)
-
+[![Build Status](https://travis-ci.org/Evaneos/HectorBundle.svg?branch=master)](https://travis-ci.org/Evaneos/HectorBundle)
 
 Symfony Bundle for [Hector](https://github.com/Evaneos/Hector)
 

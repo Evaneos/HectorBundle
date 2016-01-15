@@ -32,6 +32,7 @@ class PublisherCompilerPass implements CompilerPassInterface
             $publisher->setArguments([
                 $parameters['connection'],
                 $parameters['exchange'],
+                null,
                 [
                     'routing_key_prefix' => $parameters['routing_key_prefix'],
                 ],

@@ -33,6 +33,7 @@ class PublisherCompilerPassSpec extends ObjectBehavior
         $definition->setArguments([
             'default',
             'bar',
+            null,
             [
                 'routing_key_prefix' => 'foo',
             ],
