@@ -1,0 +1,61 @@
+{
+    "name": "evaneos/hector-bundle",
+    "license": "MIT",
+    "description": "AMQP wrapper of php C extension in order to easily manipulate connection, channel, queue and exchange",
+    "type": "symfony-bundle",
+    "keywords": ["AMQP", "wrapper", "symfony", "bundle"],
+    "homepage": "https://github.com/evaneos/hector",
+    "support": {
+        "issues": "https://github.com/evaneos/hector/issues",
+        "source": "https://github.com/evaneos/hector"
+    },
+    "authors": [
+        {
+            "name": "Johann Saunier",
+            "email": "saunier.johann@gmail.com",
+            "role": "developer"
+        },
+        {
+            "name": "Evaneos",
+            "email": "dev@evaneos.com",
+            "homepage": "http://www.evaneos.com"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "spec\\Evaneos\\HectorBundle\\": "spec"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Evaneos\\HectorBundle\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=5.5",
+        "symfony/framework-bundle": "~2.3|3.0",
+        "evaneos/hector": "^1.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^2.3",
+        "symfony/var-dumper": "^3.0",
+        "fabpot/php-cs-fixer": "^1.10",
+        "beberlei/assert": "^2.4"
+    },
+    "suggest": {
+        "symfony/event-dispatcher": "Hector dispatch some event that you can listen"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "scripts":{
+        "test": "bin/phpspec run -n -f dot",
+        "cs": "bin/php-cs-fixer fix",
+        "cs-test": "bin/php-cs-fixer fix --dry-run --diff"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1-dev"
+        }
+    }
+}

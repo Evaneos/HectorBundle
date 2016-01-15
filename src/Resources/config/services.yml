@@ -1,0 +1,74 @@
+services:
+  ## Context
+  hector.context.registry:
+      class: 'Evaneos\Hector\Context\ContextRegistry'
+
+  ## Connection
+  hector.connection.factory:
+      class: 'Evaneos\Hector\Connection\ConnectionFactory'
+      arguments:
+          - '@hector.connection.registry'
+          - '%hector.config.connections%'
+
+  hector.connection.registry:
+      class: 'Evaneos\Hector\Connection\ConnectionRegistry'
+
+  ## Channel
+  hector.channel.factory:
+      class: 'Evaneos\Hector\Channel\ChannelFactory'
+      arguments:
+          - '@hector.connection.registry'
+          - '@hector.channel.registry'
+
+  hector.channel.registry:
+      class: 'Evaneos\Hector\Channel\ChannelRegistry'
+
+  ## Consumer
+  hector.consumer.factory:
+      class: 'Evaneos\Hector\Consumer\ConsumerFactory'
+      arguments:
+          - '@hector.channel.factory'
+          - '@hector.queue.factory'
+          - '@hector.exchange.factory'
+          - '@hector.connection.registry'
+          - '@hector.exchange.registry'
+          - '@hector.queue.registry'
+
+  ## Publisher
+  hector.publisher.factory:
+      class: 'Evaneos\Hector\Publisher\PublisherFactory'
+      arguments:
+          - '@hector.connection.registry'
+          - '@hector.exchange.factory'
+          - '@hector.channel.factory'
+          - '@event_dispatcher'
+          - '@hector.exchange.registry'
+
+  ## Exchange
+  hector.exchange.registry:
+      class: 'Evaneos\Hector\Exchange\ExchangeRegistry'
+
+  hector.exchange.factory:
+      class: 'Evaneos\Hector\Exchange\ExchangeFactory'
+      arguments:
+          - '@hector.context.registry'
+          - '@hector.exchange.registry'
+
+  hector.exchange.context.factory:
+      class: 'Evaneos\Hector\Exchange\Context'
+      factory: 'Evaneos\Hector\Exchange\Context::createFromConfig'
+
+  ## Queue
+  hector.queue.registry:
+      class: 'Evaneos\Hector\Queue\QueueRegistry'
+
+  hector.queue.factory:
+      class: 'Evaneos\Hector\Queue\QueueFactory'
+      arguments:
+          - '@hector.context.registry'
+          - '@hector.queue.registry'
+
+  hector.queue.context.factory:
+      class: 'Evaneos\Hector\Queue\Context'
+      factory: 'Evaneos\Hector\Queue\Context::createFromConfig'
+
